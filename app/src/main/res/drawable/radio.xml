@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list android:oneshot="false" xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <item android:drawable="@drawable/radio_noise_1" android:duration="150" />
+    <item android:drawable="@drawable/radio_noise_2" android:duration="150" />
+    <item android:drawable="@drawable/radio_noise_3" android:duration="150" />
+    <item android:drawable="@drawable/radio_noise_4" android:duration="150" />
+    <item android:drawable="@drawable/radio_noise_5" android:duration="150" />
+    <item android:drawable="@drawable/radio_noise_6" android:duration="150" />
+    <item android:drawable="@drawable/radio_noise_7" android:duration="150" />
+    <item android:drawable="@drawable/radio_noise_8" android:duration="150" />
+    <item android:drawable="@drawable/radio_noise_9" android:duration="150" />
+</animation-list>
