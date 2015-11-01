@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:screenOrientation="landscape"
+    android:background="@drawable/gterminal"
+    tools:context="com.herokuapp.nowax.pipboy3500.StatisticActivity">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="1"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:weightSum="1"
+            android:id="@+id/linearLayoutStatistics">
+
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="208dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="0dp"
+                android:id="@+id/imageViewStatistics"
+                android:background="@drawable/radio_background"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_weight="0.60" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="587dp"
+            android:layout_height="52dp"
+            android:id="@+id/linearLayoutNavigationBar">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/stat_nav_button"
+                android:id="@+id/textViewStat"
+                android:gravity="center"
+                android:textColor="#3adf9c"
+                android:background="@drawable/nav_clicked_button"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="135dp"
+                android:clickable="true"
+                android:onClick="onStatClick"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="30dp"
+                android:background="@drawable/nav_button"
+                android:text="@string/radio_nav_button"
+                android:gravity="center"
+                android:textColor="#3adf9c"
+                android:id="@+id/textViewRadio"
+                android:clickable="true"
+                android:onClick="onRadioClick" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

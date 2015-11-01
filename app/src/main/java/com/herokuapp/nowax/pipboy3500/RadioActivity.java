@@ -1,6 +1,7 @@
 package com.herokuapp.nowax.pipboy3500;
 
 import android.app.ListActivity;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.drawable.AnimationDrawable;
 import android.media.MediaPlayer;
@@ -10,7 +11,6 @@ import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 
@@ -59,10 +59,10 @@ class Radio {
         return r.nextInt(20000000-0);
     }
 
-    public void stop(ImageView img) {
+    public void stop() {
         isRadioTurnedOn = false;
-        mp.stop();
-        img.setBackgroundResource(R.drawable.radio_background);
+        if (mp != null)
+            mp.stop();
     }
 }
 
@@ -80,12 +80,14 @@ class RadioNoiseAnimation {
         });
     }
 
-    public void stop() {
-        radioAnimation.stop();
+    public void stop(final ImageView img) {
+        if (radioAnimation != null)
+            radioAnimation.stop();
+        img.setBackgroundResource(R.drawable.radio_background);
     }
 }
 
-public class StartupActivity extends ListActivity {
+public class RadioActivity extends ListActivity {
     private static final String musicPath = "/sdcard/external_sd/MUZYKA/Radio New Vegas/radio/";
     private List<String> songs = new ArrayList<>();
     private Radio currentRadio;
@@ -96,7 +98,6 @@ public class StartupActivity extends ListActivity {
         super.onCreate(savedInstanceState);
 
         initializeActivity();
-        initializeStopButton();
         initializePlaylist();
         currentRadio = new Radio(songs, musicPath);
     }
@@ -107,20 +108,19 @@ public class StartupActivity extends ListActivity {
                     WindowManager.LayoutParams.FLAG_FULLSCREEN);
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         }
-
-        setContentView(R.layout.activity_startup);
+        setContentView(R.layout.activity_radio);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
     }
 
-    private void initializeStopButton() {
-        Button stopButton = (Button) findViewById(R.id.button);
-        stopButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                currentRadio.stop((ImageView)findViewById(R.id.imageView));
-                noise.stop();
-            }
-        });
+    public void onStatClick (View v) {
+        startActivity(new Intent(RadioActivity.this, StatisticActivity.class));
+        currentRadio.stop();
+        noise.stop((ImageView) findViewById(R.id.imageViewNoiseGraph));
+        overridePendingTransition(0, 0);
+    }
+
+    public void onRadioClick (View v) {
+        // do nothing - already on radio activity
     }
 
     private void initializePlaylist() {
@@ -139,15 +139,36 @@ public class StartupActivity extends ListActivity {
 
     @Override
     protected void onListItemClick(ListView list, View view, int position,  long id) {
+
+        for (int i = 0; i < list.getCount(); i++) {
+            View v = list.getChildAt(i);
+            v.setBackgroundResource(R.drawable.radio_button);
+        }
+
         if (currentRadio.shouldStop(position)) {
-            currentRadio.stop((ImageView)findViewById(R.id.imageView));
+            currentRadio.stop();
+            noise.stop((ImageView)findViewById(R.id.imageViewNoiseGraph));
         } else {
             try {
                 currentRadio.start(position);
-                noise.start((ImageView)findViewById(R.id.imageView));
+                noise.start((ImageView)findViewById(R.id.imageViewNoiseGraph));
+                view.setBackgroundResource(R.drawable.newvegasradio);
             } catch (IOException e) {
                 Log.v(getString(R.string.app_name), e.getMessage());
             }
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (currentRadio != null) {
+            currentRadio.stop();
+            currentRadio = null;
+        }
+        if (noise != null) {
+            noise.stop((ImageView)findViewById(R.id.imageViewNoiseGraph));
+            noise = null;
         }
     }
 }
