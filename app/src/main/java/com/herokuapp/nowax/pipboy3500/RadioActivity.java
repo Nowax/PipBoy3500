@@ -120,8 +120,20 @@ public class RadioActivity extends ListActivity {
     }
 
     public void onRadioClick (View v) {
-        // do nothing - already on radio activity
+        startActivity(new Intent(this, RadioActivity.class));
+        currentRadio.stop();
+        noise.stop((ImageView) findViewById(R.id.imageViewNoiseGraph));
+        overridePendingTransition(0, 0);    }
+
+    public void onSpecialClick (View v) {
+        // do nothing
     }
+
+    public void onQuestsClick (View v) {
+        startActivity(new Intent(this, QuestsActivity.class));
+        currentRadio.stop();
+        noise.stop((ImageView) findViewById(R.id.imageViewNoiseGraph));
+        overridePendingTransition(0, 0);    }
 
     private void initializePlaylist() {
         File rootPath = new File(musicPath);

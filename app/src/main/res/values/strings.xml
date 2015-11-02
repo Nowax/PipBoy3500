@@ -2,5 +2,7 @@
     <string name="app_name">PipBoy3500</string>
     <string name="new_vegas">Radio New Vegas</string>
     <string name="stat_nav_button">STATS</string>
+    <string name="special_nav_button">S.P.E.C.I.A.L.</string>
+    <string name="quests_nav_button">QUESTS</string>
     <string name="radio_nav_button">RADIO</string>
 </resources>

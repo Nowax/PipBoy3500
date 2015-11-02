@@ -11,19 +11,24 @@
         android:launchMode="singleInstance"
         <activity
             android:name=".RadioActivity"
-            android:noHistory="true">
+            android:noHistory="true" >
         </activity>
         <activity
             android:name=".LoadingActivity"
             android:noHistory="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".StatisticActivity"
-            android:noHistory="true">
+            android:noHistory="true" >
+        </activity>
+        <activity android:name=".SpecialActivity" >
+        </activity>
+        <activity android:name=".QuestsActivity" >
         </activity>
     </application>
 

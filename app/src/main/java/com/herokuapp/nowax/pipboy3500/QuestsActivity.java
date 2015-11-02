@@ -9,7 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 
-public class StatisticActivity extends Activity {
+public class QuestsActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +23,7 @@ public class StatisticActivity extends Activity {
                     WindowManager.LayoutParams.FLAG_FULLSCREEN);
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         }
-        setContentView(R.layout.activity_statistic);
+        setContentView(R.layout.activity_quests);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
     }
 
@@ -46,5 +46,4 @@ public class StatisticActivity extends Activity {
         startActivity(new Intent(this, QuestsActivity.class));
         overridePendingTransition(0, 0);
     }
-
 }
