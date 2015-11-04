@@ -123,17 +123,22 @@ public class RadioActivity extends ListActivity {
         startActivity(new Intent(this, RadioActivity.class));
         currentRadio.stop();
         noise.stop((ImageView) findViewById(R.id.imageViewNoiseGraph));
-        overridePendingTransition(0, 0);    }
+        overridePendingTransition(0, 0);
+    }
 
     public void onSpecialClick (View v) {
-        // do nothing
-    }
+        startActivity(new Intent(this, SpecialActivity.class));
+        currentRadio.stop();
+        noise.stop((ImageView) findViewById(R.id.imageViewNoiseGraph));
+        overridePendingTransition(0, 0);
+     }
 
     public void onQuestsClick (View v) {
         startActivity(new Intent(this, QuestsActivity.class));
         currentRadio.stop();
         noise.stop((ImageView) findViewById(R.id.imageViewNoiseGraph));
-        overridePendingTransition(0, 0);    }
+        overridePendingTransition(0, 0);
+    }
 
     private void initializePlaylist() {
         File rootPath = new File(musicPath);
@@ -164,7 +169,7 @@ public class RadioActivity extends ListActivity {
             try {
                 currentRadio.start(position);
                 noise.start((ImageView)findViewById(R.id.imageViewNoiseGraph));
-                view.setBackgroundResource(R.drawable.newvegasradio);
+                view.setBackgroundResource(R.drawable.radio_clicked_button);
             } catch (IOException e) {
                 Log.v(getString(R.string.app_name), e.getMessage());
             }

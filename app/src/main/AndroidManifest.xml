@@ -26,9 +26,12 @@
             android:name=".StatisticActivity"
             android:noHistory="true" >
         </activity>
-        <activity android:name=".SpecialActivity" >
+        <activity
+            android:name=".SpecialActivity"
+            android:noHistory="true" >
         </activity>
-        <activity android:name=".QuestsActivity" >
+        <activity android:name=".QuestsActivity"
+            android:noHistory="true" >
         </activity>
     </application>
 

@@ -7,6 +7,6 @@
     android:textColor="#3adf9c"
     android:background="@drawable/radio_button"
     android:drawable="@android:color/transparent"
-    android:gravity="center"
+    android:gravity="center_vertical"
     android:textSize="5mm">
 </TextView>
