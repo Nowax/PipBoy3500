@@ -5,7 +5,7 @@
     android:paddingRight="@dimen/activity_vertical_margin"
     android:paddingLeft="40dp"
     android:textColor="#3adf9c"
-    android:background="@drawable/radio_button"
+    android:background="@drawable/list_button"
     android:drawable="@android:color/transparent"
     android:gravity="center_vertical"
     android:textSize="5mm">

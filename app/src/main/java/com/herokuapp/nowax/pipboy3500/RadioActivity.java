@@ -149,7 +149,7 @@ public class RadioActivity extends ListActivity {
             }
 
             Collections.sort(songs);
-            ArrayAdapter<String> songList = new ArrayAdapter<>(this, R.layout.song_item, songs);
+            ArrayAdapter<String> songList = new ArrayAdapter<>(this, R.layout.list_item, songs);
             setListAdapter(songList);
         }
     }
@@ -159,7 +159,7 @@ public class RadioActivity extends ListActivity {
 
         for (int i = 0; i < list.getCount(); i++) {
             View v = list.getChildAt(i);
-            v.setBackgroundResource(R.drawable.radio_button);
+            v.setBackgroundResource(R.drawable.list_button);
         }
 
         if (currentRadio.shouldStop(position)) {
@@ -169,7 +169,7 @@ public class RadioActivity extends ListActivity {
             try {
                 currentRadio.start(position);
                 noise.start((ImageView)findViewById(R.id.imageViewNoiseGraph));
-                view.setBackgroundResource(R.drawable.radio_clicked_button);
+                view.setBackgroundResource(R.drawable.list_clicked_button);
             } catch (IOException e) {
                 Log.v(getString(R.string.app_name), e.getMessage());
             }
